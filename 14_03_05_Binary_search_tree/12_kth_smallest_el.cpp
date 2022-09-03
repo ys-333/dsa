@@ -63,3 +63,33 @@ int main(){
     cout<<kthNode->key<<endl ;
     return 0 ;
 }
+
+/*
+    Node *insert(Node *root,int key){
+    if(root==NULL){
+        return new Node(key);
+    }
+    else if(root->key>key){
+        root->lCount+=1 ;
+        root->left = insert(root->left,key) ;
+    }
+    else{
+        root->right = insert(root->right,key) ;
+    }
+    return root ;
+}
+
+int count =0  ;
+
+Node *kthRoot(Node *root,int k){
+    if(root->lCount-k==0||k==0){
+        return root ;
+    }
+    else if(k<root->lCount){
+        return kthRoot(root->left,k) ;
+    }
+    else{
+        return kthRoot(root->right,k-root->lCount) ;
+    }
+}
+*/ 
