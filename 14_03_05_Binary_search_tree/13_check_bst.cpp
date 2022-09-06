@@ -136,3 +136,52 @@ int main(){
     cout<<check2(root) ;
     return 0 ;
 }
+
+
+
+/*
+        It works but not good code practice
+        void maxLeft(Node *root,int &resLeft){
+    if(root==NULL){
+        return  ;
+    }
+    resLeft = max(root->key,resLeft) ;
+    maxLeft(root->left,resLeft) ;
+    maxLeft(root->right,resLeft) ;
+}
+
+// to get minimum element in right sub tree
+
+void minRight(Node *root,int &resRight){
+    if(root==NULL){
+        return  ;
+    }
+    resRight = min(root->key,resRight) ;
+    minRight(root->left,resRight) ;
+    minRight(root->right,resRight) ;
+}
+
+
+bool checkBst(Node *root){
+    if(root==NULL){
+        return true ;
+    }
+    if(root->left==NULL&&root->right==NULL){
+        return true ;
+    }
+    int resLeft = INT_MIN ;
+    maxLeft(root->left,resLeft) ;
+    
+    int resRight = INT_MAX ;
+    minRight(root->right,resRight) ;
+    
+    if(resLeft>root->key||resRight<root->key){
+        return false ;
+    }
+    cout<<root->key<<" " ;
+    return checkBst(root->left)&&checkBst(root->right) ;
+}
+    
+    
+
+*/ 

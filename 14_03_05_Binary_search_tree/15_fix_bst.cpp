@@ -80,7 +80,60 @@ int main(){
     return 0 ;
 }
 
+/*
+    Solove using lower bound and upper bound
 
-
-
+    void swapNodes(Node *root,int lower_bound,int upper_bound,vector<Node*>&v){
+    if(root==NULL){
+        return ;
+    }
+    if(root->key<lower_bound||root->key>upper_bound){
+        v.push_back(root) ;
+        return  ;
+        // return false ;
+    }
     
+    swapNodes(root->left,lower_bound,root->key,v) ;
+    swapNodes(root->right,root->key,upper_bound,v) ;
+    // if(!swapNodes(root->left,lower_bound,root->key,v)||!swapNodes(root->right,root->key,upper_bound,v)){
+    //     return false ;
+    // }
+    // return true ;
+}
+
+int main() {
+    // Node *root = NULL ;
+    Node *root = new Node(60) ;
+    root->left =  new Node(8) ;
+    root->left->left =  new Node(4) ;
+    root->left->right =  new Node(10) ;
+    root->right = new Node(80) ;
+    root->right->left = new Node(20) ;
+    root->right->right = new Node(100)
+    ;
+    
+    int lower_bound  =  INT_MIN ;
+    int upper_bound = INT_MAX;
+    
+    vector<Node*>v ;
+    
+    swapNodes(root,lower_bound,upper_bound,v);
+    
+    
+    cout<<"Pre swapping inorder traversal "<<endl ;
+    print(root) ;
+    cout<<endl ;
+    
+    if(v.size()==1){
+        cout<<"1"<<endl ;
+        swap(v[0]->key,root->key) ;
+    }
+    else{
+        cout<<"this executed"<<endl ;
+        swap(v[0]->key,v[1]->key) ;
+    }
+    
+    cout<<"Post swapping inorder traversal "<<endl ;
+    print(root) ;
+    cout<<endl ;
+*/ 
