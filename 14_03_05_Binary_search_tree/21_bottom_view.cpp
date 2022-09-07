@@ -79,6 +79,33 @@ int main(){
     bottomView(root) ;
     return 0 ;
 }
+
+/*
+    Printing bottom level using inorder traveral instaed of level order traveral
+
+    void printTopLevel(map<int,int>m){
+    for(auto it:m){
+        cout<<it.second<<" " ;
+    }
+}
+
+
+void topLevelInorder(Node *root,int hd,map<int,int>&m){
+    if(root==NULL){
+        return ;
+    }
+    topLevelInorder(root->left,hd-1,m) ;
+    m[hd] = root->key ;
+    topLevelInorder(root->right,hd+1,m) ;
+}
+
+    Caller Function
+
+    int hd = 0 ;
+    map<int,int>m ;
+    topLevelInorder(root,hd,m) ;
+
+*/ 
     
     
     
