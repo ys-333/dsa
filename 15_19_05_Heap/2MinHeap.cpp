@@ -50,6 +50,7 @@ class MinHeap{
     return (2*i+2) ;
   }
   
+  // Heapify heap
     void heapify_up(int i){
   
      int pt = parent(i) ;
@@ -60,7 +61,9 @@ class MinHeap{
    
   }
 
-    void heapify(int i){
+  // heapify down
+
+    void heapify_down(int i){
     int lt =left(i) ;
     int rt =right(i) ;
     int smallest =  i ;
@@ -72,10 +75,11 @@ class MinHeap{
     }
     if(smallest!=i){
       swap(arr[i],arr[smallest]) ;
-      heapify(smallest) ;
+      heapify_down(smallest) ;
     }
   }
- 
+  
+  // to insert the elment into  heap
     void insert(int x){
     if(size==cap){
       cout<<"The size is equal to capactiy "<<endl ;
@@ -87,6 +91,7 @@ class MinHeap{
     heapify_up(index) ;
   }
   
+  // to get min element from the min heap
    int getMin(){
         if(size==0){
             return INT_MAX ;
@@ -99,7 +104,7 @@ class MinHeap{
         else{
             swap(arr[0],arr[size-1]) ;
             size-- ;
-            heapify(0) ;
+            heapify_down(0) ;
             return arr[size] ;
         }
     }
