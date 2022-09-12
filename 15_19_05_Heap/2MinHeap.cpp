@@ -27,6 +27,7 @@
 */ 
 #include<iostream>
 #include<cmath>
+#include<climits>
 using namespace std;
 
 
@@ -59,7 +60,7 @@ class MinHeap{
    
   }
 
-    void heapify_down(int i){
+    void heapify(int i){
     int lt =left(i) ;
     int rt =right(i) ;
     int smallest =  i ;
@@ -71,7 +72,7 @@ class MinHeap{
     }
     if(smallest!=i){
       swap(arr[i],arr[smallest]) ;
-      heapify_down(smallest) ;
+      heapify(smallest) ;
     }
   }
  
@@ -86,12 +87,22 @@ class MinHeap{
     heapify_up(index) ;
   }
   
-  int extractMin(int i){
-      swap(arr[i],arr[size-1]) ;
-      size-- ;
-      heapify_down(i) ;
-      return arr[size] ;
-  }
+   int getMin(){
+        if(size==0){
+            return INT_MAX ;
+        }
+        if(size==1){
+            size-- ;
+            return arr[size+1] ;
+        }
+            
+        else{
+            swap(arr[0],arr[size-1]) ;
+            size-- ;
+            heapify(0) ;
+            return arr[size] ;
+        }
+    }
   
     void print(){
         if(size==0){
@@ -120,11 +131,27 @@ int main(){
     m.insert(12) ;
     // m.print() ;
     cout<<endl ;
-    cout<<m.extractMin(0)<<endl ;
+    cout<<m.getMin()<<endl ;
     m.print();
     
     // int arr[] = {40,20,30,35,25,80,32,100,70,60} ;
    
     return 0 ;
 }
-    
+
+/*
+  Iterative approach
+  
+  void fixMinHeap(int *arr,int size,int i){
+    while(i<size&&arr[i]>arr[left(i)]||arr[i]>arr[right(i)]){
+        if(arr[left(i)]<arr[right(i)]){
+            swap(arr[i],arr[left(i)]) ;
+            i = left(i) ;
+        }
+        else{
+            swap(arr[i],arr[right(i)]) ;
+            i = right(i) ;
+        }
+    }
+}
+*/ 
