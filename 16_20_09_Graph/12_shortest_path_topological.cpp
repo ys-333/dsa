@@ -23,6 +23,7 @@ class Node{
 class Graph{
     int V ;
     vector<Node>*adj ;
+    public:
     Graph(int V) ;
     void addEdge(int u,int v,int w) ;
     void printGraph() ;
@@ -80,5 +81,10 @@ void Graph::shortest_path(int source){
     }
 }
 int main(){
-
+    Graph g(4) ;
+    g.addEdge(0,1,5) ;
+    g.addEdge(0,2,10) ;
+    g.addEdge(1,1,5) ;
+    g.addEdge(0,1,5) ;
+    g.addEdge(0,1,5) ;
 }
