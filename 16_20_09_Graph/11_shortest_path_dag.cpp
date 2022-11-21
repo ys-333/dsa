@@ -109,3 +109,30 @@ int main()
     // g.shortest_path(temp, v, 0);
     // print(v);
 }
+
+/*
+
+    SAME APPROACH BUT WITH LITTLE LESS VARIABLES
+
+    void Graph::shortest_path(int s){
+    vector<int>dist(V,INT_MAX) ;
+    dist[s] = 0 ;
+    dfs(dist,s) ;
+    // printing the distance value
+    for(int i=0;i<V;i++){
+        cout<<dist[i]<<" " ;
+    }
+}
+
+void Graph::dfs(vector<int>&dist,int s){
+   for(Node x:adj[s]){
+        int v = x.getV() ;
+        int w = x.getW() ;
+        if(dist[v]>w+dist[s]){
+            dist[v] = w + dist[s] ;
+            dfs(dist,v);
+        }
+   } 
+}
+
+*/ 

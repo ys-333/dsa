@@ -12,7 +12,7 @@
 
     Input 1:
 
-    int arr[] = {17,15,13,9,6,5,10,4,8,3,1} ;
+    int arr[] = {17,15,13,9,6,5,10,4,8,3,1};
 
     Output: {1,3,5,4,6,13,10,9,8,15,17}
 
@@ -24,14 +24,14 @@
 using namespace std;
 
 void heapify_down(int arr[],int n,int i){
-    int l = 2*i+1 ;
-    int r = 2*i+2 ;
+    int lt = 2*i+1 ;
+    int rt = 2*i+2 ;
     int smallest = i ;
-    if(l<n&&arr[smallest]>arr[l]){
-        smallest = l ;
+    if(lt<n&&arr[lt]<arr[smallest]){
+        smallest= lt ;
     }
-    if(r<n&&arr[smallest]>arr[r]){
-        smallest = r ;
+    if(rt<n&&arr[rt]<arr[smallest]){
+        smallest= rt ;
     }
     if(smallest!=i){
         swap(arr[i],arr[smallest]) ;
@@ -39,17 +39,11 @@ void heapify_down(int arr[],int n,int i){
     }
 }
 
-
-// build heap function
-
 void buildHeap(int arr[],int n){
-    int i = (n-2)/2 ;
-    for(i;i>=0;i--){
+    for(int i=n-2/2;i>=0;i--){
         heapify_down(arr,n,i) ;
     }
 }
-
-// to print the min heap
 
 void printHeap(int arr[],int n){
     for(int i=0;i< n;i++){
