@@ -2,7 +2,7 @@
     Problem Statement: Disjoint Data Structure
 
 
-    // To find that weather two vertect are direct or mutual friend of each other
+    To find that weather two vertect are direct or mutual friend of each other
     
     Input 1:
      int V=5 ;
@@ -90,3 +90,76 @@ int main() {
     // makeFriends(adj,3,4) ;
     return 0;
 }
+
+/*
+    #include<iostream>
+#include<vector>
+#include<queue>
+#include<climits>
+using namespace std;
+
+// class Node{
+//     int v,w ;
+//     public:
+//     Node(int v,int w){
+//         this->v=v;
+//         this->w=w;
+//     }
+//     int getV(){
+//         return v;
+//     }
+//     int getW(){
+//         return w ;
+//     }
+// };
+
+class Graph{
+    int V;
+    vector<int>*adj;
+    public:
+    Graph(int V){
+        this->V=V;
+        adj=new vector<int>[V];
+    }
+    void makeFriends(int u,int v){
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    bool dfs(vector<bool>&visited,int u,int v){
+        visited[u] = true ;
+        if(u==v){
+            return true ;
+        }
+        for(int x:adj[u]){
+            if(visited[x]==false){
+                if(dfs(visited,x,v)){
+                    return true ;
+                }
+            }
+        }
+        return false ;
+    }
+    bool areFriends(int u,int v){
+        vector<bool>visited(V,false);
+        return dfs(visited,u,v);
+    }
+      
+    
+};
+int main(){
+    int V=5 ;
+    Graph g(V);
+    g.makeFriends(0,1) ;
+    g.makeFriends(1,3) ;
+    g.makeFriends(1,2) ;
+    cout<<g.areFriends(0,4)<<endl ;
+    cout<<g.areFriends(0,3)<<endl ;
+    cout<<g.areFriends(0,2)<<endl ;
+    cout<<g.areFriends(1,5)<<endl ;
+    cout<<g.areFriends(1,2)<<endl ;
+}
+    
+  
+    
+    
+*/ 

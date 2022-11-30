@@ -1,6 +1,7 @@
 /*
     ? Approach
-    Todo: 1) Take a edge and see that weather it contain cycle or not
+    Todo: 1) First sort the Edges of graph in order of weight 
+        todo:Take a edge and see that weather it contain cycle or not (Use find operation to see that it contain cycle or not)
         * If not then put into MST i.e call union operation and add it's weight into res.
         ! else don't put into mst array
 
