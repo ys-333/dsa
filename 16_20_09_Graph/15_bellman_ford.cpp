@@ -7,7 +7,7 @@
     Bellman ford can detect negative weight cycle.
 
     todo: The first Loop ensure that we get shortest distance from the source vertex.
-    todo: And second loop ensure that we can detect negative weight edge in grpah if there are any.
+    todo: And second loop ensure that we can detect negative cycle weight edge in grpah if there are any.
 
 
     Input:
