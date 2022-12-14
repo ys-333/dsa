@@ -1,63 +1,81 @@
-/*PRIMS ALGORITHM*/ 
-
 #include<iostream>
 #include<vector>
 #include<climits>
-#include<queue>
 using namespace std;
-typedef pair<int,int>edge ;
 
 class Graph{
     int V;
-    vector<edge>*adj;
+    vector<int>*adj;
     public:
     Graph(int v){
-        V=v;
-        adj = new vector<edge>[V];
+        V = v;
+        adj = new vector<int>[V];
     }
-    void addEdge(int u,int v,int w){
-        adj[u].push_back(make_pair(v,w));
-        adj[v].push_back(make_pair(u,w));
+    void addEdge(int u,int v){
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
-    
-    void shortest_path(int s){
-       vector<int>dist(V,INT_MAX);
-       dist[s] = 0 ;
-       priority_queue<edge,vector<edge>,greater<edge>>pq ;
-       pq.push(make_pair(dist[s],s));
-       while (pq.empty()==false)
-       {
-            edge x= pq.top();
-            pq.pop();
-            int w = x.first ;
-            int u = x.second;
-            for(edge v:adj[u]){
-                if(dist[v.first]>dist[u]+v.second){
-                    dist[v.first] = dist[u]+v.second ;
-                    pq.push(make_pair(dist[v.first],v.first));
-                }
-            }
-       }
-       
-       for(int i=0;i<V;i++){
-        cout<<dist[i]<<" ";
-       }
-    }
-               
-                
-        
-    void print(vector<int>dist){
+    void print(){
         for(int i=0;i<V;i++){
-            cout<<dist[i]<<" ";
+            for(int x:adj[i]){
+                cout<<x<<" ";
+            }
         }
     }
+
+    void dfs(int parent,int s,vector<int>&discTime,vector<int>&lowTime,vector<bool>&visited){
+        
+        visited[s] = true;
+        if(parent!=-1){
+            discTime[s] = discTime[parent]++;
+        }
+
+        for(int x:adj[s]){
+            if(visited[x]==false){
+                dfs(s,x,discTime,lowTime,visited);
+            }
+            else{
+                if(lowTime[s]>discTime[x]){
+                    lowTime[s] = discTime[x];
+                }
+            }   
+        }
+        
+       
+    }
+
+    void printVector(vector<int>v){
+        for(int i=0;i<v.size();i++){
+            cout<<v[i]<<" " ;
+        }
+        cout<<endl;
+    }
+
+    void articulation_point(){
+        vector<bool>visited(V,false);
+        vector<int>discTime(V,0);
+        vector<int>lowTime(V,INT_MAX);
+        int parent = -1;
+        int s = 0 ;
+        discTime[s] = 1;
+        lowTime[s] = 1;
+        dfs(parent,s,discTime,lowTime,visited);
+        printVector(discTime);
+        printVector(lowTime);
+    }
 };
+
+
 int main(){
-     Graph g(4) ;
-    g.addEdge(0,1,4) ;
-    g.addEdge(0,2,5) ;
-    g.addEdge(1,2,3) ;
-    g.addEdge(1,3,10) ;
-    g.addEdge(2,3,2) ;
-    g.shortest_path(0) ;
+     Graph g(4);
+	// g.addEdge( 0, 1);
+	// g.addEdge( 0, 3);
+	// g.addEdge( 1, 2);
+	// g.addEdge( 3, 4);
+    // g.print();
+    // g.articulation_point() ;
+    g.addEdge( 0, 1);
+    g.addEdge( 1, 2);
+    g.addEdge( 2, 3);
+    g.articulation_point();
 }
