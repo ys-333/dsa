@@ -20,6 +20,7 @@
 
 
 #include<iostream>
+#include<climits>
 #include<vector>
 using namespace std;
 class Graph{
@@ -72,7 +73,7 @@ class Graph{
         // disc,low,isAp,visisted == array
         // parent, source == int
         vector<int>disc(V,0);
-        vector<int>low;
+        vector<int>low(V,INT_MAX);
         vector<bool>isAp(V,false);
         vector<bool>visited(V,false);
         int parent = -1;
