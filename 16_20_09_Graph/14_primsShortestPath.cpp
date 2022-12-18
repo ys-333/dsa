@@ -1,9 +1,7 @@
 /*
     Problem Statement: //? Shortest path using prims algorithm
 */ 
-/*
-    ? Dijkstra’s shortest path algorithm using Heap in O(E logV):
-*/ 
+
 #include<iostream>
 #include<queue>
 #include<utility>
