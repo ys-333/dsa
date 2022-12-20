@@ -15,6 +15,18 @@
 
     Output: 1140
 
+    Input 2:
+    {
+        {10,60},{20,100},{30,120}
+    }
+    int knapsack_cap = 50 ;
+
+    Output: 240
+
+    Explanation: so we included the 0th and 1st index weight completly and for third index we only added the weight required
+    current_weight =  10+20+20
+    current_values = 60+100+120/30*20 = 240
+
 */ 
 
 #include<iostream>
