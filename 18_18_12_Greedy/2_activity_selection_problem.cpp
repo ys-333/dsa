@@ -29,8 +29,17 @@
         {3,8},{2,4},{1,3},{10,11}
     }
     
+    sort the struct on basis of finish time in increasing order
+    {1,3},{2,4},{3,8},{10,11}
+
+    finishTime = 8
+    startTime = 10
+
+    o/p {1,3},{3,8},{10,11}
 
     Output:(1,3),(3,8),(10,11)
+
+    
     
 */ 
     
