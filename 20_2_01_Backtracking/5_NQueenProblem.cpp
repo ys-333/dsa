@@ -8,6 +8,12 @@
     3) We check for all path in which queen move, and see that is their any queen in that path, If not we return true if all queens are stable 
     and do not attack each other.
     Otherwise return false. 
+
+    Input: N=3
+    Output:false
+
+    Input: N=4
+    Output:True
 */ 
 
 #include<iostream>
