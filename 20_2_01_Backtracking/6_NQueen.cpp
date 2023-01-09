@@ -1,5 +1,7 @@
 /*
     Problem Statement: N queen problem with another appraoch
+    Input: 4
+    Output:Yes
 */ 
 #include<iostream>
 using namespace std;
